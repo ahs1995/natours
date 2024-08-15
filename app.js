@@ -9,6 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const pug = require('pug');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const cors = require('cors');
 
 const AppError = require('./utilitis/appError');
@@ -147,6 +148,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 // // Custom middleware example
 // app.use((req, res, next) => {

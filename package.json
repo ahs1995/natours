@@ -11,7 +11,7 @@
     "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
-    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
+    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js/bundled",
     "watch:js": "parcel watch --no-hmr ./public/js/index.js --dist-dir ./public/js/bundled"
   },
   "author": "Ashik Sarkar",
@@ -20,6 +20,7 @@
     "@babel/polyfill": "^7.12.1",
     "axios": "^1.7.3",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
