@@ -9,10 +9,11 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log('This is a middleware');
-  next();
-});
+// MIDDLEWARE EXAMPLE
+// app.use((req, res, next) => {
+//   console.log('This is a middleware');
+//   next();
+// });
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
