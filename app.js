@@ -50,35 +50,32 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'", 'data:', 'blob:'],
-
       baseUri: ["'self'"],
-
-      fontSrc: ["'self'", 'https:', 'data:'],
-
-      scriptSrc: ["'self'", 'https://*.cloudflare.com'],
-
-      scriptSrc: ["'self'", 'https://*.stripe.com'],
-
-      scriptSrc: ["'self'", 'http:', 'https://*.mapbox.com', 'data:'],
-
-      scriptSrc: ["'self'", 'http:', 'https://*.openstreetmap.com', 'data:'],
-
-      scriptSrc: ["'self'", 'http:', 'https://*.unpkg.com', 'data:'],
-
+      fontSrc: ["'self'", 'https:', 'data:', ...fontSrcUrls],
+      scriptSrc: [
+        "'self'",
+        'https://*.cloudflare.com',
+        'https://*.stripe.com',
+        'http:',
+        'https://*.mapbox.com',
+        'https://*.openstreetmap.com',
+        'https://unpkg.com',
+        'data:',
+        ...scriptSrcUrls,
+      ],
       frameSrc: ["'self'", 'https://*.stripe.com'],
-
       objectSrc: ["'none'"],
-
-      styleSrc: ["'self'", 'https:', 'unsafe-inline'],
-
+      styleSrc: ["'self'", 'https:', "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", 'data:', 'blob:'],
-
       childSrc: ["'self'", 'blob:'],
-
       imgSrc: ["'self'", 'data:', 'blob:'],
-
-      connectSrc: ["'self'", 'blob:', 'https://*.mapbox.com'],
-
+      connectSrc: [
+        "'self'",
+        'blob:',
+        'https://*.mapbox.com',
+        'https://checkout.stripe.com',
+        ...connectSrcUrls,
+      ],
       upgradeInsecureRequests: [],
     },
   })
