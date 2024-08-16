@@ -21,7 +21,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       {
         price_data: {
           currency: 'usd',
-          unit_amount: tour.price * 100,
           product_data: {
             name: `${tour.name} Tour`,
             description: tour.summary,
@@ -31,6 +30,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
               }`,
             ],
           },
+          unit_amount: tour.price * 100,
         },
         quantity: 1,
       },
@@ -62,7 +62,7 @@ const createBookingCheckout = async (session) => {
   await Booking.create({ tour, user, price });
 };
 
-exports.webhookCheckout = catchAsync(async (req, res, next) => {
+exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
 
   let event;
@@ -77,10 +77,10 @@ exports.webhookCheckout = catchAsync(async (req, res, next) => {
   }
 
   if (event.type === 'checkout.session.completed')
-    await createBookingCheckout(event.data.object);
+    createBookingCheckout(event.data.object);
 
   res.status(200).json({ received: true });
-});
+};
 
 exports.createBooking = factory.createDoc(Booking);
 exports.getBooking = factory.getOneDoc(Booking);
