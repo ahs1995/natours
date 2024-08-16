@@ -45,67 +45,51 @@ app.options('*', cors());
 
 // Set security http headers
 
-// app.use(helmet());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", 'data:', 'blob:'],
-      baseUri: ["'self'"],
-      fontSrc: ["'self'", 'https:', 'data:', ...fontSrcUrls],
-      scriptSrc: [
-        "'self'",
-        'https://*.cloudflare.com',
-        'https://*.stripe.com',
-        'http:',
-        'https://*.mapbox.com',
-        'https://*.openstreetmap.com',
-        'https://unpkg.com',
-        'data:',
-        ...scriptSrcUrls,
-      ],
-      frameSrc: ["'self'", 'https://*.stripe.com'],
-      objectSrc: ["'none'"],
-      styleSrc: ["'self'", 'https:', "'unsafe-inline'", ...styleSrcUrls],
-      workerSrc: ["'self'", 'data:', 'blob:'],
-      childSrc: ["'self'", 'blob:'],
-      imgSrc: ["'self'", 'data:', 'blob:'],
-      connectSrc: [
-        "'self'",
-        'blob:',
-        'https://*.mapbox.com',
-        'https://checkout.stripe.com',
-        ...connectSrcUrls,
-      ],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
-
-// Further HELMET configuration for Security Policy (CSP)
-const scriptSrcUrls = ['https://unpkg.com/', 'https://tile.openstreetmap.org'];
+const scriptSrcUrls = [
+  'https://unpkg.com/',
+  'https://tile.openstreetmap.org',
+  'https://*.cloudflare.com',
+  'https://*.stripe.com',
+  'https://*.mapbox.com',
+  'https://*.openstreetmap.com',
+];
 const styleSrcUrls = [
   'https://unpkg.com/',
   'https://tile.openstreetmap.org',
   'https://fonts.googleapis.com/',
 ];
-const connectSrcUrls = ['https://unpkg.com', 'https://tile.openstreetmap.org'];
+const connectSrcUrls = [
+  'https://unpkg.com',
+  'https://tile.openstreetmap.org',
+  'https://*.mapbox.com',
+  'https://checkout.stripe.com',
+];
 const fontSrcUrls = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: [],
-      connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'self'", ...scriptSrcUrls],
+      defaultSrc: ["'self'", 'data:', 'blob:'],
+      baseUri: ["'self'"],
+      connectSrc: ["'self'", 'blob:', ...connectSrcUrls],
+      scriptSrc: [
+        "'self'",
+        'https:',
+        'http:',
+        'blob:',
+        'https://*.stripe.com',
+        ...scriptSrcUrls,
+      ],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", 'blob:'],
-      objectSrc: [],
+      objectSrc: ["'none'"],
       imgSrc: ["'self'", 'blob:', 'data:', 'https:'],
       fontSrc: ["'self'", ...fontSrcUrls],
+      frameSrc: ["'self'", 'https://*.stripe.com'],
+      childSrc: ["'self'", 'blob:'],
     },
   })
 );
-
 // console.log(process.env);
 
 // 1) MIDDLEWARES
