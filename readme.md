@@ -93,15 +93,21 @@ To set up the Natours project locally, follow these steps:
 
 Clone the repository
 
-`git clone https://github.com/your-username/natours.git`
+```
+git clone https://github.com/your-username/natours.git
+```
 
 Navigate to the project directory
 
-`cd natours/`
+```
+cd natours/
+```
 
 Install the dependencies
 
-`npm install`
+```
+npm install
+```
 
 ## Usage
 
@@ -112,11 +118,15 @@ To start the development server, follow these steps:
 Ensure that all necessary environment variables are set up correctly. This typically includes variables for database connection, API keys, and other configurations.
 Start MongoDB using Docker Compose
 
-`docker-compose up`
+```
+docker-compose up
+```
 
 Run the Node.js web application
 
-`npm run start:dev`
+```
+npm run start:dev
+```
 
 ## Access the Natours website
 
@@ -132,15 +142,21 @@ If you'd like to explore and modify the codebase on your local machine, follow t
 
 **1.Clone the repository**
 
-`git clone https://github.com/your-username/natours.git`
+```
+git clone https://github.com/your-username/natours.git
+```
 
 **2.Navigate to the cloned repository**
 
-`cd natours/`
+```
+cd natours/
+```
 
 **3.Install the necessary dependencies**
 
-`npm install`
+```
+npm install
+```
 
 **4.Set up external service accounts**
 
@@ -179,7 +195,9 @@ STRIPE_WEBHOOK_SECRET=your-stripe-webhook-secret
 
 **6.Start the server**
 
-`npm run start:dev`
+```
+npm run start:dev
+```
 
 **7.Access the application**
 
