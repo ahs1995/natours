@@ -78,6 +78,7 @@ app.use(
         'http:',
         'blob:',
         'https://*.stripe.com',
+        "'unsafe-inline'",
         ...scriptSrcUrls,
       ],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],

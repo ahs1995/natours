@@ -49,7 +49,7 @@ Secure credit card payments for tour bookings, ensuring a safe and seamless tran
 - Users can add booked tours to their list of favorite tours for easy access.
 - Manage your list of favorites, adding and removing tours as desired.
 
-#### Tech Stack
+## Tech Stack
 
 The Natours project is built using the following technologies:
 
@@ -163,9 +163,9 @@ npm install
 If you don't already have them, create accounts with the following services:
 
 - MongoDB: For your database.
-- Mapbox: For map and location services.
+- Leaflet: For map and location services.
 - Stripe: For payment processing.
-- SendGrid: For sending transactional emails.
+- Vrevo: For sending transactional emails.
 - Mailtrap: For email testing in a safe environment.
 
 **5.Configure environment variables**
@@ -185,6 +185,12 @@ EMAIL_PASSWORD=your-mailtrap-password
 EMAIL_HOST=smtp.mailtrap.io
 EMAIL_PORT=2525
 EMAIL_FROM=yourrealemail@example.com
+
+BREVO_API=apiKey
+BREVO_HOST=your-brevo-host
+BREVO_PORT=587
+BREVO_LOGIN=Your-brevo-login
+BREVO_PASSWORD=Your-brevo-password
 
 SENDGRID_USERNAME=apikey
 SENDGRID_PASSWORD=your-sendgrid-password
