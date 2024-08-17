@@ -53,11 +53,11 @@ module.exports = class Email {
     await this.newTransport().sendMail(mailOptions);
   };
 
-  sendWelcome = async function () {
+  sendWelcome = async () => {
     await this.send('welcome', 'Welcome to the natours family!');
   };
 
-  passwordReset = async function () {
+  passwordReset = async () => {
     await this.send(
       'passwordReset',
       'Your password reset token(Vald for only ten minutes!)'

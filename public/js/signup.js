@@ -15,6 +15,8 @@ export const signup = async (name, email, password, passwordConfirm) => {
       },
     });
 
+    console.log('signup response:', res);
+
     if (res.data.status === 'success') {
       showAlert('success', 'signed up in successfully!');
       window.setTimeout(() => {
